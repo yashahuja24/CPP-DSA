@@ -1,4 +1,6 @@
-#include<bits/stdc++.h>//use for every library
+#include<iostream>
+#include<vector>
+#include<map>
 using namespace std;
 vector<int>TwoSum(int *arr,int n,int target);
 int main()
