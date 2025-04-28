@@ -35,7 +35,7 @@ This repository contains my practice codes and projects written in C++. It cover
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/your-repo-name.git
-2. Compile and run any C++ file:
+2. Compile and run any C++ file in your VS Code Terminal:
   ```bash
    g++ your_filename.cpp
    ./a.exe
