@@ -40,10 +40,10 @@ This repository contains my practice codes and projects written in C++. It cover
    g++ your_filename.cpp
    ./a.exe
   ```
-💡 Why This Repository?
-To improve coding skills by consistently practicing.
-To master the fundamentals of Data Structures and Algorithms.
-To build a strong base in C++ and Object-Oriented Programming.
-To prepare for coding interviews and competitive programming.
-
+💡 Why This Repository?<br>
+To improve coding skills by consistently practicing.<br>
+To master the fundamentals of Data Structures and Algorithms.<br>
+To build a strong base in C++ and Object-Oriented Programming.<br>
+To prepare for coding interviews and competitive programming.<br>
+<br>
 You must have a g++ compiler to run this in VS Code with the compile and run command or download the shortcut Code Runner
