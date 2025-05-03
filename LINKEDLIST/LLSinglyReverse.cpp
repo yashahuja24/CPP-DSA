@@ -29,7 +29,7 @@ int main()
         cin>>data;
         InsertatTail(tail,data);
     }
-    Node *temp=head;
+    Node *temp=head;//this is done to update tail, at the end when the linked list is reversed
     cout<<"ORIGINAL LINKED LIST:-"<<endl;
     print(head);
     cout<<"HEAD: "<<head->data<<endl;
