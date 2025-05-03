@@ -54,19 +54,23 @@ void findMiddle1(Node *head,int n)
         MiddleElement=MiddleElement->next;
         count++;
     }
+    if(n%2==1)
+    {
+        MiddleElement=MiddleElement->next;
+    }
     cout<<MiddleElement->data<<" "<<endl;
     return;
 }
 void findMiddle2(Node *head)
 {
-    Node *fast=head;
+    Node *fast=head->next;
     Node *slow=head;
     if(head==NULL || head->next==NULL)
     {
         cout<<head->data<<endl;
         return;
     }
-    while(fast->next!=NULL && fast->next->next!=NULL)//&& isiliye kyuki dono mei se koi true hua toh wo loop mei nhi enter hoga
+    while(fast!=NULL && fast->next!=NULL)//&& isiliye kyuki dono mei se koi true hua toh wo loop mei nhi enter hoga
     {
         fast=fast->next->next;
         slow=slow->next;
