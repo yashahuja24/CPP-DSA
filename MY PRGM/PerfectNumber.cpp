@@ -6,7 +6,7 @@ int main()
     int n;
     cout<<"Enter the Number: ";
     cin>>n;
-    cout<<"Perfect Number: "<<check(++n);//perdfect number should be greater then the n;
+    cout<<"Perfect Number: "<<check(++n);//perfect number should be greater then the n;
     return 0;
 }
 int check(int n)
