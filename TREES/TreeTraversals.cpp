@@ -61,7 +61,7 @@ void inOrder(Node *root)
     cout<<root->data<<" ";
     inOrder(root->right);
     return;
-}//1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1
+}
 void preOrder(Node *root)
 {
     if(!root)
@@ -84,3 +84,5 @@ void postOrder(Node *root)
     cout<<root->data<<" ";
     return;
 }
+//Test case
+//1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1
