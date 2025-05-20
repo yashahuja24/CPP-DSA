@@ -24,7 +24,10 @@ int main()
     Node *root=NULL;
     root=buildTree(root);
     cout<<"Level Order Traversal:-"<<endl;
+    levelOrderTraversal(root);
+    cout<<"Inverse Level Order Traversal:-"<<endl;
     inverseLevelOrderTraversal(root);
+    return 0;
 }
 Node* buildTree(Node *root)
 {
@@ -83,6 +86,7 @@ void levelOrderTraversal(Node *root)
             }
         }
     }
+    cout<<endl;
     return;
 }
 void inverseLevelOrderTraversal(Node *root)
@@ -143,4 +147,4 @@ void inverseLevelOrderTraversal(Node *root)
     }
 }
 //Test Case
-//1 3 5 7 11 17 -1 -1 -1 -1 -1 -1 -1
+//1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1

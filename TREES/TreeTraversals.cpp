@@ -17,6 +17,7 @@ Node* buildTree(Node *root);
 void inOrder(Node *root);
 void preOrder(Node *root);
 void postOrder(Node *root);
+void countNodes(Node *root,int &count);
 int main()
 {
     Node *root=NULL;
@@ -29,6 +30,10 @@ int main()
     cout<<endl;
     cout<<"Post Order Traversal:-"<<endl;
     postOrder(root);
+    cout<<endl;
+    int count=0;
+    countNodes(root,count);
+    cout<<"Number of Nodes in the Tree are: "<<count;
     return 0;
 }
 Node* buildTree(Node *root)
@@ -83,6 +88,16 @@ void postOrder(Node *root)
     postOrder(root->right);
     cout<<root->data<<" ";
     return;
+}
+void countNodes(Node *root,int &count)
+{
+    if(!root)
+    {
+        return;
+    }
+    countNodes(root->left,count);
+    count+=1;
+    countNodes(root->right,count);
 }
 //Test case
 //1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1
