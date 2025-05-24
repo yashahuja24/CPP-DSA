@@ -1,6 +1,5 @@
 #include<iostream>
 #include<queue>
-#include<stdlib.h>
 using namespace std;
 class Node
 {
@@ -17,17 +16,23 @@ class Node
 };
 Node* buildTree(Node *root);
 void levelOrderTraversal(Node *root);
-int Approach1(Node *root);
-pair<int,int> Approach2(Node *root);
+void inverseLevelOrderTraversal(Node *root);
 int maxHeight(Node *root);
+bool isBalanced(Node *root);
 int main()
 {
     Node *root=NULL;
     root=buildTree(root);
     cout<<"Level Order Traversal:-"<<endl;
     levelOrderTraversal(root);
-    cout<<"Diameter of Tree by Approach 1 is: "<<Approach1(root)<<endl;
-    cout<<"Diameter of Tree by Approach 2 is: "<<Approach2(root).first<<endl;
+    if(isBalanced(root))
+    {
+        cout<<"Binary tree is Balanced";
+    }
+    else
+    {
+        cout<<"Binary tree is not Balanced";
+    }
     return 0;
 }
 Node* buildTree(Node *root)
@@ -101,37 +106,22 @@ int maxHeight(Node *root)
     int ans=max(leftDepth,rightDepth);
     return ans;
 }
-int Approach1(Node *root)//TIME COMPLEXITY: O(n^2)
+bool isBalanced(Node *root)
 {
     if(!root)
     {
-        return 0;
+        return true;
     }
-    int opt1=Approach1(root->left);//answer found in left subtree
-    int opt2=Approach1(root->right);//answer found in right subtree
+    int Lheight=maxHeight(root->left);
+    int Rheight=maxHeight(root->right);
+    Lheight++,Rheight++;
 
-    int opt3=maxHeight(root->left)+maxHeight(root->right)+1;//answer is height of left subtree + right subtree +root(1) 
-
-    int ans=max(opt1,max(opt2,opt3));//formula to find diameter , is max of above 3 options
-    return ans;
-}
-pair<int,int>Approach2(Node *root)//TIME COMPLEXITY: O(n)
-{
-    if(!root)
+    if(abs(Lheight-Rheight)>1)
     {
-        pair<int,int>p=make_pair(0,0);//first depicts diameter , second depicts height
-        return p;
+        return false;
     }
-    pair<int,int>left=Approach2(root->left);
-    pair<int,int>right=Approach2(root->right);
-
-    int opt1=left.first;//answer found in left subtree
-    int opt2=right.first;//answer found in right subtree
-
-    int opt3=left.second+right.second+1;//answer is height of left subtree + right subtree +root(1) 
-
-    pair<int,int>ans;
-    ans.first=max(opt1,max(opt2,opt3));//formula to find diameter , is max of above 3 options
-    ans.second=max(left.second,right.second)+1;//formula to find height of tree
-    return ans;
+    else
+    {
+        return isBalanced(root->left) && isBalanced(root->right);
+    }
 }

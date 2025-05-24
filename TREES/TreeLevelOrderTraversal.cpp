@@ -86,7 +86,6 @@ void levelOrderTraversal(Node *root)
             }
         }
     }
-    cout<<endl;
     return;
 }
 void inverseLevelOrderTraversal(Node *root)
