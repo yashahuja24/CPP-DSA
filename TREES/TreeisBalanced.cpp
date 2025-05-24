@@ -19,8 +19,8 @@ Node* buildTree(Node *root);
 void levelOrderTraversal(Node *root);
 void inverseLevelOrderTraversal(Node *root);
 int maxHeight(Node *root);
-bool isBalanced1(Node *root);
-pair<bool,int> isBalanced2(Node *root);
+bool isBalanced1(Node *root);//TIME COMPLEXITY O(n^2)
+pair<bool,int> isBalanced2(Node *root);//TIME COMPLEXITY O(n)
 int main()
 {
     Node *root=NULL;
@@ -116,7 +116,7 @@ int maxHeight(Node *root)
     int ans=max(leftDepth,rightDepth);
     return ans;
 }
-bool isBalanced1(Node *root)
+bool isBalanced1(Node *root)//TIME COMPLEXITY O(n^2)
 {
     if(!root)
     {
@@ -135,7 +135,7 @@ bool isBalanced1(Node *root)
         return isBalanced1(root->left) && isBalanced1(root->right);
     }
 }
-pair<bool,int> isBalanced2(Node *root)
+pair<bool,int> isBalanced2(Node *root)//TIME COMPLEXITY O(n)
 {
     if(!root)
     {
