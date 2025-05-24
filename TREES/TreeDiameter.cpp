@@ -108,12 +108,12 @@ int Approach1(Node *root)//TIME COMPLEXITY: O(n^2)
     {
         return 0;
     }
-    int opt1=Approach1(root->left);
-    int opt2=Approach1(root->right);
+    int opt1=Approach1(root->left);//answer found in left subtree
+    int opt2=Approach1(root->right);//answer found in right subtree
 
-    int opt3=maxHeight(root->left)+maxHeight(root->right)+1;
+    int opt3=maxHeight(root->left)+maxHeight(root->right)+1;//answer is height of left subtree + right subtree +root(1) 
 
-    int ans=max(opt1,max(opt2,opt3));
+    int ans=max(opt1,max(opt2,opt3));//formula to find diameter , is max of above 3 options
     return ans;
 }
 pair<int,int>Approach2(Node *root)//TIME COMPLEXITY: O(n)
@@ -126,13 +126,13 @@ pair<int,int>Approach2(Node *root)//TIME COMPLEXITY: O(n)
     pair<int,int>left=Approach2(root->left);
     pair<int,int>right=Approach2(root->right);
 
-    int opt1=left.first;
-    int opt2=right.first;
+    int opt1=left.first;//answer found in left subtree
+    int opt2=right.first;//answer found in right subtree
 
-    int opt3=left.second+right.second+1;
+    int opt3=left.second+right.second+1;//answer is height of left subtree + right subtree +root(1) 
 
     pair<int,int>ans;
-    ans.first=max(opt1,max(opt2,opt3));
-    ans.second=max(left.second,right.second)+1;
+    ans.first=max(opt1,max(opt2,opt3));//formula to find diameter , is max of above 3 options
+    ans.second=max(left.second,right.second)+1;//formula to find height of tree
     return ans;
 }
