@@ -1,5 +1,6 @@
 #include<iostream>
 #include<queue>
+#include<stdlib.h>
 using namespace std;
 class Node
 {
@@ -18,20 +19,29 @@ Node* buildTree(Node *root);
 void levelOrderTraversal(Node *root);
 void inverseLevelOrderTraversal(Node *root);
 int maxHeight(Node *root);
-bool isBalanced(Node *root);
+bool isBalanced1(Node *root);
+pair<bool,int> isBalanced2(Node *root);
 int main()
 {
     Node *root=NULL;
     root=buildTree(root);
     cout<<"Level Order Traversal:-"<<endl;
     levelOrderTraversal(root);
-    if(isBalanced(root))
+    if(isBalanced1(root))
     {
-        cout<<"Binary tree is Balanced";
+        cout<<"Binary tree is Balanced"<<endl;
     }
     else
     {
-        cout<<"Binary tree is not Balanced";
+        cout<<"Binary tree is not Balanced"<<endl;
+    }
+    if(isBalanced2(root).first)
+    {
+        cout<<"Binary tree is Balanced"<<endl;
+    }
+    else
+    {
+        cout<<"Binary tree is not Balanced"<<endl;
     }
     return 0;
 }
@@ -106,7 +116,7 @@ int maxHeight(Node *root)
     int ans=max(leftDepth,rightDepth);
     return ans;
 }
-bool isBalanced(Node *root)
+bool isBalanced1(Node *root)
 {
     if(!root)
     {
@@ -122,6 +132,28 @@ bool isBalanced(Node *root)
     }
     else
     {
-        return isBalanced(root->left) && isBalanced(root->right);
+        return isBalanced1(root->left) && isBalanced1(root->right);
     }
+}
+pair<bool,int> isBalanced2(Node *root)
+{
+    if(!root)
+    {
+        pair<bool,int>p=make_pair(true,0);
+        return p;
+    }
+    
+    pair<bool,int>left=isBalanced2(root->left);
+    pair<bool,int>right=isBalanced2(root->right);
+    pair<bool,int>ans;
+    ans.second=max(left.second,right.second)+1;
+    if(abs(left.second-right.second)<=1 && left.first && right.first)
+    {
+        ans.first=true;
+    }
+    else
+    {
+        ans.first=false;
+    }
+    return ans;
 }

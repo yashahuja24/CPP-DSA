@@ -17,8 +17,8 @@ class Node
 };
 Node* buildTree(Node *root);
 void levelOrderTraversal(Node *root);
-int Approach1(Node *root);
-pair<int,int> Approach2(Node *root);
+int Diameter1(Node *root);//TIME COMPLEXITY: O(n^2)
+pair<int,int> Diameter2(Node *root);//TIME COMPLEXITY: O(n)
 int maxHeight(Node *root);
 int main()
 {
@@ -26,8 +26,8 @@ int main()
     root=buildTree(root);
     cout<<"Level Order Traversal:-"<<endl;
     levelOrderTraversal(root);
-    cout<<"Diameter of Tree by Approach 1 is: "<<Approach1(root)<<endl;
-    cout<<"Diameter of Tree by Approach 2 is: "<<Approach2(root).first<<endl;
+    cout<<"Diameter of Tree by Diameter 1 is: "<<Diameter1(root)<<endl;
+    cout<<"Diameter of Tree by Diameter 2 is: "<<Diameter2(root).first<<endl;
     return 0;
 }
 Node* buildTree(Node *root)
@@ -101,29 +101,29 @@ int maxHeight(Node *root)
     int ans=max(leftDepth,rightDepth);
     return ans;
 }
-int Approach1(Node *root)//TIME COMPLEXITY: O(n^2)
+int Diameter1(Node *root)//TIME COMPLEXITY: O(n^2)
 {
     if(!root)
     {
         return 0;
     }
-    int opt1=Approach1(root->left);//answer found in left subtree
-    int opt2=Approach1(root->right);//answer found in right subtree
+    int opt1=Diameter1(root->left);//answer found in left subtree
+    int opt2=Diameter1(root->right);//answer found in right subtree
 
     int opt3=maxHeight(root->left)+maxHeight(root->right)+1;//answer is height of left subtree + right subtree +root(1) 
 
     int ans=max(opt1,max(opt2,opt3));//formula to find diameter , is max of above 3 options
     return ans;
 }
-pair<int,int>Approach2(Node *root)//TIME COMPLEXITY: O(n)
+pair<int,int>Diameter2(Node *root)//TIME COMPLEXITY: O(n)
 {
     if(!root)
     {
         pair<int,int>p=make_pair(0,0);//first depicts diameter , second depicts height
         return p;
     }
-    pair<int,int>left=Approach2(root->left);
-    pair<int,int>right=Approach2(root->right);
+    pair<int,int>left=Diameter2(root->left);
+    pair<int,int>right=Diameter2(root->right);
 
     int opt1=left.first;//answer found in left subtree
     int opt2=right.first;//answer found in right subtree

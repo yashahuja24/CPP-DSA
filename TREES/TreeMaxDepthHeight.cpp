@@ -17,7 +17,7 @@ class Node
 };
 Node* builtTree(Node *root);
 void levelOrderTraversal(Node *root);
-int maxHeight(Node *root);
+int maxHeight(Node *root);//TIME COMPLEXITY O(n)
 int main()
 {
     Node *root=NULL;

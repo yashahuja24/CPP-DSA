@@ -17,8 +17,8 @@ class Node
     }
 };
 Node* buildTree(Node *root);
-void levelOrderTraversal(Node *root);
-void inverseLevelOrderTraversal(Node *root);
+void levelOrderTraversal(Node *root);//TIME COMPLEXITY O(n)
+void inverseLevelOrderTraversal(Node *root);//TIME COMPLEXITY O(n)
 int main()
 {
     Node *root=NULL;

@@ -16,7 +16,7 @@ class Node
 };
 Node* builtTree(Node* root);
 void levelOrderTraversal(Node* root);
-void sumOfLeftNodes(Node* root,int& count);
+void sumOfLeftNodes(Node* root,int& count);//TIME COMPLEXITY O(n)
 int main()
 {
     Node *root=NULL;
