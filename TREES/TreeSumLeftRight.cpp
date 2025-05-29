@@ -1,5 +1,6 @@
 #include<iostream>
 #include<queue>
+// #include<stdlib.h>
 using namespace std;
 class Node
 {
@@ -14,24 +15,31 @@ class Node
         this->right=NULL;
     }
 };
-Node* builtTree(Node *root);
+Node *builtTree(Node *root);
 void levelOrderTraversal(Node *root);
-int maxHeight(Node *root);//TIME COMPLEXITY O(n)
+pair<bool,int> checkSum(Node *root);
 int main()
 {
     Node *root=NULL;
     root=builtTree(root);
-    cout<<"Level Order Traversal: "<<endl;
+    cout<<"Level Order Traversal:-"<<endl;
     levelOrderTraversal(root);
-    int ans=maxHeight(root);
-    cout<<"Height of the Binary Tree is: "<<ans;
+    if(checkSum(root).first)
+    {
+        cout<<"Sum of left and right is equal to the root";
+    }
+    else
+    {
+        cout<<"Sum of left and right is not equal to the root";
+    }
     return 0;
 }
-Node* builtTree(Node *root)
+Node *builtTree(Node *root)
 {
     int data;
     cout<<"Enter the data: ";
     cin>>data;
+
     root=new Node(data);
 
     if(data==-1)
@@ -39,10 +47,10 @@ Node* builtTree(Node *root)
         return NULL;
     }
 
-    cout<<"Enter the data left of "<<data<<endl;
+    cout<<"Enter data for inserting in left of "<<data<<endl;
     root->left=builtTree(root);
 
-    cout<<"Enter the data right of "<<data<<endl;
+    cout<<"Enter data for inserting in right of "<<data<<endl;
     root->right=builtTree(root);
 
     return root;
@@ -73,7 +81,6 @@ void levelOrderTraversal(Node *root)
             {
                 q.push(temp->left);
             }
-
             if(temp->right)
             {
                 q.push(temp->right);
@@ -82,15 +89,31 @@ void levelOrderTraversal(Node *root)
     }
     return;
 }
-int maxHeight(Node *root)
+pair<bool,int>checkSum(Node *root)
 {
     if(!root)
     {
-        return 0;
+        pair<bool,int>p=make_pair(true,0);
+        return p;
     }
-    int leftDepth=maxHeight(root->left);
-    int rightDepth=maxHeight(root->right);
-    leftDepth++,rightDepth++;
-    int ans=max(leftDepth,rightDepth);
+    if(!root->left && !root->right)//leaf node condition
+    {
+        pair<bool,int>p=make_pair(true,root->data);
+        return p;
+    }
+    pair<bool,int>leftAns=checkSum(root->left);
+    pair<bool,int>rightAns=checkSum(root->right);
+    pair<bool,int>ans;
+    bool condition= (root->data==(leftAns.second+rightAns.second))?condition=true:condition=false;
+    if(leftAns.first && rightAns.first && condition)
+    {
+        ans.first=true;
+        ans.second=root->data*2;//same as root->data+leftAns.second+rightAns.second
+    }
+    else
+    {
+        ans.first=false;
+        ans.second=root->data+leftAns.second+rightAns.second;
+    }
     return ans;
 }

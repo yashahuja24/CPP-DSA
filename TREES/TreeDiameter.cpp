@@ -1,6 +1,5 @@
 #include<iostream>
 #include<queue>
-#include<stdlib.h>
 using namespace std;
 class Node
 {
