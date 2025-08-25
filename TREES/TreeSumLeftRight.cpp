@@ -104,7 +104,7 @@ pair<bool,int>checkSum(Node *root)
     pair<bool,int>leftAns=checkSum(root->left);
     pair<bool,int>rightAns=checkSum(root->right);
     pair<bool,int>ans;
-    bool condition= (root->data==(leftAns.second+rightAns.second))?condition=true:condition=false;
+    bool condition= (root->data==(leftAns.second+rightAns.second))?true:false;
     if(leftAns.first && rightAns.first && condition)
     {
         ans.first=true;
