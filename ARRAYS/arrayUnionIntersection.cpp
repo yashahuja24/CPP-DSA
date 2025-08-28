@@ -1,4 +1,5 @@
-#include<bits/stdc++.h>//use for every library
+#include<iostream>
+#include<vector>
 using namespace std;
 vector<int>union_ans(vector<int>arr1,vector<int>arr2);
 vector<int>inter_ans(vector<int>arr1,vector<int>arr2);
