@@ -24,9 +24,9 @@ void subSeq(vector<int>arr,vector<int>&ans,int i)
 {
     if(i>=arr.size())
     {
-        for(int j:ans)
+        for(int num:ans)
         {
-            cout<<j<<" ";
+            cout<<num<<" ";
         }
         cout<<endl;
         return;
