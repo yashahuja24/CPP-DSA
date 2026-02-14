@@ -47,11 +47,11 @@ int partition(int arr[],int start,int end)
     int i=start,j=end;
     while(i<pivotIndex && j>pivotIndex)
     {
-        while(arr[i]<=pivot)
+        while(i<pivotIndex && arr[i]<=pivot)
         {
             i++;
         }
-        while(arr[j]>=pivot)
+        while(j>pivotIndex && arr[j]>=pivot)
         {
             j--;
         }
