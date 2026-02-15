@@ -13,14 +13,22 @@ int main()
     {
         cin>>arr[i];
     }
-    cout<<"Second Largest Element: "<<SecondLargest(arr,n);
+    int ans=SecondLargest(arr,n);
+    if(ans==INT_MIN)
+    {
+        cout<<"No second largest element";
+    }
+    else
+    {
+        cout<<"Second Largest Element: "<<ans;
+    }
     return 0;
 }
 int SecondLargest(int arr[],int n)
 {
-    if(n==1)
+    if(n<2)
     {
-        return arr[0];
+        return INT_MIN;
     }
     int largest=INT_MIN,secLargest=INT_MIN;
     for(int i=0;i<n;i++)
@@ -30,7 +38,7 @@ int SecondLargest(int arr[],int n)
             secLargest=largest;
             largest=arr[i];
         }
-        else if(secLargest<arr[i] && arr[i]>largest)
+        else if(secLargest<arr[i] && arr[i]<largest)
         {
             secLargest=arr[i];
         }
